@@ -14,30 +14,30 @@ The Hospital management system provides a well-tuned management system that help
 
 > ## Project Wireframes
 
-* _**Home Page**_
+* ### _**Home Page**_
 
   ![homepage](src/main/resources/static/projectwireframes/homepage.PNG)
 
-* _**Signup Page**_
+* ### _**Signup Page**_
 
   ![signup](src/main/resources/static/projectwireframes/signup.PNG)
 
-* _**Login Page**_
+* ### _**Login Page**_
 
   ![login](src/main/resources/static/projectwireframes/login.PNG)
 
-* _**Appointment Page**_
+* ### _**Appointment Page**_
 
   ![appointment](src/main/resources/static/projectwireframes/appointment.PNG)
 
-* _**Patient record Page**_
+* ### _**Patient record Page**_
 
   ![patient record](src/main/resources/static/projectwireframes/pationtrecord.PNG)
 
-* _**Pharmacy Page**_
+* ### _**Pharmacy Page**_
 
   ![pharmacy](src/main/resources/static/projectwireframes/pharmacy.PNG)
 
-* _**Review Page**_
+* ### _**Review Page**_
 
   ![review](src/main/resources/static/projectwireframes/review.PNG)
