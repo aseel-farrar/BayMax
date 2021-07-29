@@ -16,28 +16,28 @@ The Hospital management system provides a well-tuned management system that help
 
 * _**Home Page**_
 
-  ![homepage](src/main/resources/static/project wireframes/homepage.PNG)
+  ![homepage](src/main/resources/static/projectwireframes/homepage.PNG)
 
 * _**Signup Page**_
 
-  ![signup](src/main/resources/static/project wireframes/signup.PNG)
+  ![signup](src/main/resources/static/projectwireframes/signup.PNG)
 
 * _**Login Page**_
 
-  ![login](src/main/resources/static/project wireframes/login.PNG)
+  ![login](src/main/resources/static/projectwireframes/login.PNG)
 
 * _**Appointment Page**_
 
-  ![appointment](src/main/resources/static/project wireframes/appointment.PNG)
+  ![appointment](src/main/resources/static/projectwireframes/appointment.PNG)
 
 * _**Patient record Page**_
 
-  ![patient record](src/main/resources/static/project wireframes/pationtrecord.PNG)
+  ![patient record](src/main/resources/static/projectwireframes/pationtrecord.PNG)
 
 * _**Pharmacy Page**_
 
-  ![pharmacy](src/main/resources/static/project wireframes/pharmacy.PNG)
+  ![pharmacy](src/main/resources/static/projectwireframes/pharmacy.PNG)
 
 * _**Review Page**_
 
-  ![review](src/main/resources/static/project wireframes/review.PNG)
+  ![review](src/main/resources/static/projectwireframes/review.PNG)
