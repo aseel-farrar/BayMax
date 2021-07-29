@@ -2,11 +2,11 @@
 
 > ## Team members:
 
-1. yousef salem.
-2. aseel farrar
-3. ahmad ali.
-4. muhammed jaradat.
-5. judy bataineh.
+1. Yousef Salem.
+2. Aseel Farrar
+3. Ahmad Ali.
+4. Muhammed Jaradat.
+5. Judy Bataineh.
 
 > ##description for Hospital management system:
  
