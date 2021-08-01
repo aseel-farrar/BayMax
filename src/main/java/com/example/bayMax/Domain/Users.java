@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.YearMonth;
 import java.util.*;
 
 @Entity
@@ -23,6 +24,8 @@ public class Users implements UserDetails {
     private String bloodType;
     private Long nationalId;
 
+    private int old;
+
     @Column(unique = true)
     private String username;
     private String password;
@@ -35,6 +38,13 @@ public class Users implements UserDetails {
     private Set<Roles> roles = new HashSet<>();
 
 
+    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL )
+    private List<Record> records= new ArrayList<>();
+
+    public List<Record> getRecords() {
+        return records;
+    }
+
     public Users(){
     }
     public Users(String firstname, String lastname, Date dateOfBirth, String location, String bloodType, Long nationalId, String username, String password) {
@@ -46,6 +56,14 @@ public class Users implements UserDetails {
         this.nationalId = nationalId;
         this.username = username;
         this.password = password;
+        this.old= calculateAge(dateOfBirth);
+    }
+    public int calculateAge(Date dateOfBirth){
+        int year = YearMonth.now().getYear();
+
+        int age= year - dateOfBirth.getYear();
+
+        return age;
     }
 
     public Long getId() {
