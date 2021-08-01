@@ -1,11 +1,12 @@
 package com.example.bayMax.Domain;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
+import java.util.*;
 
 @Entity
 @Table(name="users")
@@ -25,6 +26,13 @@ public class Users implements UserDetails {
     @Column(unique = true)
     private String username;
     private String password;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Roles> roles = new HashSet<>();
 
 
     public Users(){
@@ -122,7 +130,14 @@ public class Users implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<Roles> roles = getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for (Roles role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+
+        return authorities;
     }
 
     public String getPassword() {
@@ -133,9 +148,13 @@ public class Users implements UserDetails {
         this.password = password;
     }
 
+    public Set<Roles> getRoles() {
+        return roles;
+    }
 
-
-
+    public void addRole(Roles role ) {
+        this.roles.add(role);
+    }
 
 
 }

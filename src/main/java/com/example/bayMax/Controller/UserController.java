@@ -1,8 +1,10 @@
 package com.example.bayMax.Controller;
 
+import com.example.bayMax.Domain.Roles;
 import com.example.bayMax.Domain.Users;
 import com.example.bayMax.Infrastructure.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,7 +57,7 @@ public class UserController {
         return "profile";
     }
 
-
+    // Add new users with user (patient) role
     @PostMapping("/signup")
     public RedirectView trySignUp(@RequestParam String firstname,
                                   @RequestParam String lastname,
@@ -66,6 +68,7 @@ public class UserController {
                                   @RequestParam Date dateOfBirth,
                                   @RequestParam Long nationalId){
         Users newUser = new Users(firstname,lastname,dateOfBirth,location,bloodType,nationalId,username,bCryptPasswordEncoder.encode(password));
+        newUser.addRole(new Roles("USER"));
         newUser = userRepository.save(newUser);
 
         UsernamePasswordAuthenticationToken authentication= new UsernamePasswordAuthenticationToken(newUser,null,new ArrayList<>());
@@ -78,5 +81,21 @@ public class UserController {
 //        return "error";
 //    }
 
+
+    // Add new users with doctor role
+    @PostMapping("/doctors")
+    public RedirectView addDoctors(@RequestParam String firstname,
+                                   @RequestParam String lastname,
+                                   @RequestParam String username,
+                                   @RequestParam String password,
+                                   @RequestParam String location,
+                                   @RequestParam String bloodType,
+                                   @RequestParam Date dateOfBirth,
+                                   @RequestParam Long nationalId){
+        Users newUser = new Users(firstname,lastname,dateOfBirth,location,bloodType,nationalId,username,bCryptPasswordEncoder.encode(password));
+        newUser.addRole(new Roles("DOCTOR"));
+        newUser = userRepository.save(newUser);
+        return new RedirectView("/");
+    }
 
 }
