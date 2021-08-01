@@ -1,9 +1,8 @@
 package com.example.bayMax.Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 public class Roles {
@@ -31,4 +30,6 @@ public class Roles {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }
