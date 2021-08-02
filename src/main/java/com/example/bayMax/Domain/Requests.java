@@ -1,20 +1,24 @@
 package com.example.bayMax.Domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Requests {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class Requests implements Serializable {
+
+    @EmbeddedId
+    private RequestsPK id;
+
 @ManyToOne
-    @JoinColumn(name = "patient_id")
-    Users patient;
+@MapsId("patient_id")
+    @JoinColumn(name = "PATIENT_ID")
+   private Users patient;
 
 
 @ManyToOne
-    @JoinColumn(name = "doctor_id")
-    Users doctor;
+@MapsId("doctor_id")
+    @JoinColumn(name = "DOCTOR_ID")
+   private Users doctor;
 
 boolean isAccepted;
 
@@ -27,9 +31,7 @@ boolean isAccepted;
         this.isAccepted = isAccepted;
     }
 
-    public long getId() {
-        return id;
-    }
+ 
 
     public Users getPatient() {
         return patient;

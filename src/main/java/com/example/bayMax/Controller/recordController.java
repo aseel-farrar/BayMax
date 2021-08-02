@@ -28,7 +28,7 @@ public class recordController {
         m.addAttribute("user", patient);
         Record addRecord = new Record("asdas", "sdfsdf", patient);
 
-        return ("record.html");
+        return ("record");
     }
 
 
