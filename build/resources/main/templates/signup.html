@@ -5,19 +5,15 @@
 
 <body>
 <header th:replace="fragment :: header"></header>
+<main style="margin-top: 10%">
 
 <p sec:authorize="isAuthenticated()" id="user"> User Name:    <span sec:authentication="name" >Bob</span>  </p>
-<div class="sidenav">
-    <div class="login-main-text">
-        <h2>Application<br> Login Page</h2>
-        <p>Login or register from here to access.</p>
-    </div>
-</div>
 <div class="main">
-    <div class="col-md-6 col-sm-12">
+    <div >
         <div class="login-form">
+            <fieldset>
+                <legend style="font-size: x-large"> Sign Up</legend>
             <form action="#" th:action="@{/signup}" method="post">
-                <h1>Sign Up</h1>
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" name="firstname" class="form-control" placeholder="User Name">
@@ -52,9 +48,17 @@
                 </div>
                 <input type="submit" class="btn btn-black" value="Signup"></input>
             </form>
+            </fieldset>
         </div>
     </div>
 </div>
+</main>
 <footer th:replace="fragment :: footer"></footer>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="contactform/contactform.js"></script>
 </body>
 </html>
