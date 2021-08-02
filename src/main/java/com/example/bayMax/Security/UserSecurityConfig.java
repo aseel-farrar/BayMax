@@ -31,7 +31,7 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
         http
 
                 .authorizeRequests()
-                .antMatchers("/", "/signup","/login","/*.css","/*.PNG").permitAll()
+                .antMatchers("/", "/signup","/login","/*.css","/*.PNG","/H2-console/**").permitAll()
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/*.css").permitAll()
 //                .antMatchers("/*.js").permitAll()
