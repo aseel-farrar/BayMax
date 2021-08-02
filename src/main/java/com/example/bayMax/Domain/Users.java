@@ -27,16 +27,29 @@ public class Users implements UserDetails {
     private String username;
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Roles> roles = new HashSet<>();
+            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
+    private Set<Roles> roles=new HashSet<>();
 
 
     public Users(){
     }
+
+    @OneToMany(mappedBy = "user")
+    List<Reviews> reviews;
+
+
+    @OneToMany(mappedBy = "patient")
+    Set<Requests> requests;
+
+    @OneToMany(mappedBy = "doctor")
+    Set<Requests> requests2;
+
+
+
     public Users(String firstname, String lastname, Date dateOfBirth, String location, String bloodType, Long nationalId, String username, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -62,6 +75,10 @@ public class Users implements UserDetails {
 
     public String getLastname() {
         return lastname;
+    }
+
+    public String getFullName(){
+        return firstname+" "+lastname;
     }
 
     public void setLastname(String lastname) {
@@ -130,7 +147,7 @@ public class Users implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Roles> roles = getRoles();
+        Set<Roles> roles = this.getRoles();
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
         for (Roles role : roles) {
@@ -156,5 +173,19 @@ public class Users implements UserDetails {
         this.roles.add(role);
     }
 
+    public List<Reviews> getReviews() {
+        return reviews;
+    }
 
+    public void addReview(Reviews review) {
+        this.reviews.add(review);
+    }
+
+    public Set<Requests> getRequests() {
+        return requests2;
+    }
+
+    public Set<Requests> getRequests2() {
+        return requests2;
+    }
 }
