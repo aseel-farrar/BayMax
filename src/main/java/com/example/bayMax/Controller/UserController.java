@@ -84,7 +84,7 @@ if (principal!=null) { Users user =userRepository.findUsersByUsername(principal.
 
         UsernamePasswordAuthenticationToken authentication= new UsernamePasswordAuthenticationToken(newUser,null,new ArrayList<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new RedirectView("/myprofile");
+        return new RedirectView("/");
     }
 
 //    @GetMapping("/access-denied")
