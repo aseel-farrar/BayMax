@@ -93,7 +93,7 @@ public class RequestsController {
     public RedirectView acceptRequests(Principal principal, long id, boolean accepted, Requests Srequest) {
         Users doctor=userRepository.findUsersByUsername(principal.getName());
         Users patient=userRepository.findById(id).orElseThrow();
-Requests request=new Requests();
+        Requests request=new Requests();
         for (Requests chosenRequest:doctor.getDoctorRequests()
              ) {
             if(chosenRequest.getPatient()==patient){
