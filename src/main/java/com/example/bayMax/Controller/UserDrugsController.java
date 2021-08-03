@@ -37,8 +37,8 @@ public class UserDrugsController {
             userService.assignDrugToUser(userId, drugId);
         }
 
-        //TODO: redirect
-        return new RedirectView("#");
+        //TODO: redirect to drugs form
+        return new RedirectView("/");
     }
 
 }

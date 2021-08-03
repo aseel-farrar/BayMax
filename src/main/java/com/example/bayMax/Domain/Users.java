@@ -40,14 +40,15 @@ public class Users implements UserDetails {
 
     @OneToMany(mappedBy = "users",cascade = CascadeType.ALL )
     private List<Record> records= new ArrayList<>();
-    //////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ADD  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<</////
+
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_drugs",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "drug_id"))
     private final Set<Drug> drugs = new HashSet<>();
-//////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ADD  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<</////
+
 
     public List<Record> getRecords() {
         return records;
@@ -215,10 +216,8 @@ public class Users implements UserDetails {
         return doctorRequests;
     }
 
-    //////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ADD  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<</////
     public Set<Drug> getDrugs() {
         return drugs;
     }
-//////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ADD  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<</////
 
 }

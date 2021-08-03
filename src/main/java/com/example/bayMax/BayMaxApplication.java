@@ -68,53 +68,7 @@ public class BayMaxApplication implements CommandLineRunner {
 			counter += 95;
 		}
 
-//		// create users for testing
-//		Users aseel = new Users("assel");
-//		userRepository.save(aseel);
-//
-//		Users judy = new Users("judy");
-//		userRepository.save(judy);
-//
-//		Users ahmad = new Users("ahmad");
-//		userRepository.save(ahmad);
-//
-//		Users mohammad = new Users("mohammad");
-//		userRepository.save(mohammad);
-//
-//		Users yousef = new Users("yousef");
-//		userRepository.save(yousef);
-
-//        // assign drugs to users for testing
-//        assignDrugToUser(3L, 8L);
-//        assignDrugToUser(3L, 100L);
-//        assignDrugToUser(4L, 33L);
-//        assignDrugToUser(4L, 77L);
-//        assignDrugToUser(5L, 100L);
-//        assignDrugToUser(5L, 77L);
-//        assignDrugToUser(2L, 8L);
-//        assignDrugToUser(2L, 300L);
-//        assignDrugToUser(1L, 33L);
-//        assignDrugToUser(1L, 300L);
-
-
-
-		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
 	}
-	// the following assignDrugToUser method here for testing
-//    /**
-//     * function to assign specific drug to specific user
-//     * @param userId
-//     * @param drugId
-//     */
-//    public void assignDrugToUser(Long userId, Long drugId){
-//    Users user= userRepository.findUsersByUserId(userId);
-//    Drug drug = drugsService.getDrug(drugId);
-//    user.getDrugs().add(drug);
-//    userRepository.save(user);
-//}
 
 	/**
 	 * function to get the drugs from the API
