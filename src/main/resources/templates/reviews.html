@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="css/reviews.css">
+</head>
+<body>
+
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+<div class="spacer2"></div>
+<center>
+    Crafted by : <a href="http://codersandip.com/" target="_blank">Sandip Das</a> <br>
+    Warning: Do not copy paste our original content in your website, like client name, review, images, etc. </center>
+    <div class="spacer"></div>
+
+
+    <div class="sd_master_wrapper">
+        <div class="sdtestBg2"></div>
+        <div class="sdtestBg3"></div>
+        <div class="slideshow">
+
+            <div class="content"> <!-- slide 1 -->
+                <div class="thumbnail">
+                    <img src="https://farsighttechnologies.com/wp-content/uploads/2020/09/AC.jpg">
+                </div>
+                <div class="btnNtxt">
+                    <div class="sdAllContent">
+
+                        <div class="sd_scroll">
+                            <h1 class="sdCustomSliderHeadig">A wonderful, user-friendly HR solution! Farsight HR Solution helped us implement ESS (Employee Self Service) portal for our large enterprise, which made both employees and Human Resources more productive. User-oriented interface and professional team.</h1>
+                        </div>
+                        <p class="SdClientName">Vice President</p>
+                        <p class="SdClientDesc">CPF India</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content"> <!-- slide 2 -->
+                <div class="thumbnail">
+                    <img src="https://farsighttechnologies.com/wp-content/uploads/2020/09/MS.jpg">
+                </div>
+                <div class="btnNtxt">
+                    <div class="sdAllContent">
+
+                        <div class="sd_scroll">
+                            <h1 class="sdCustomSliderHeadig">For us, Farsight has become much more than a software solution provider. Farsight has been our helping hand with implementing business automation. The team's expertise, skill, and commitment to excellence are what makes them so great.</h1>
+                        </div>
+                        <p class="SdClientName">Head IT</p>
+                        <p class="SdClientDesc">Mushahi Auto Parts</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="spacer"></div>
+<script>
+    jQuery(document).ready(function($){
+        const $slickElement = $('.slideshow');
+
+        $slickElement.slick({
+            autoplay: true,
+            dots: false,
+        });
+
+    });
+</script>
+</body>
+</html>
