@@ -35,16 +35,17 @@ public class RequestsController {
         Users patient = userRepository.findUsersByUsername(principal.getName());
         Roles roles = rolesRepository.findRolesByName("DOCTOR");
         List<Users> doctors = userRepository.findAllByRoles(roles);
-
+        int[] times = {9,10,11,12,13,14,15,16};
+        model.addAttribute("times", times);
         model.addAttribute("doctors", doctors);
         model.addAttribute("patient", patient);
         return "appointment";
     }
 
     @PostMapping("/appointment")
-    public RedirectView selectAppointment(long id, long doctorId) {
+    public RedirectView selectAppointment(long id, long doctorId,Principal principal, String date, String time) {
         boolean isExist = false;
-        Users users = userRepository.findById(id).orElseThrow();
+        Users patient = userRepository.findUsersByUsername(principal.getName());
         System.out.println("Doctor name = " + doctorId);
         Users doctor = userRepository.findById(doctorId).orElseThrow();
 
@@ -56,19 +57,21 @@ public class RequestsController {
         }
         if (!isExist) {
             Requests request = new Requests();
+            String appointDate = date + " at " + time+":00";
+            request.setCreatedAt(appointDate);
             request.setDoctor(doctor);
-            request.setPatient(users);
+            request.setPatient(patient);
             request.setAccepted(false);
             requestsRepository.save(request);
 
         } else {
             System.out.println("Request is found");
-            for (Requests request: users.getPatientRequests()
+            for (Requests request: patient.getPatientRequests()
                  ) {
-                System.out.println(request.getDoctor().getFullName());
+                System.out.println(request);
             }
 //            System.out.println(doctor.getDoctorRequests().toArray().toString());
-//            System.out.println(users.getPatientRequests().toArray().toString());
+//            System.out.println(.getPatientRequests().toArray().toString());
         }
         return new RedirectView("/appointment");
     }
@@ -87,17 +90,22 @@ public class RequestsController {
     }
 
     @PostMapping("/requests")
-    public RedirectView acceptRequests(Principal principal, long id, boolean accepted, long requestId) {
-        Users patient = userRepository.findById(id).orElseThrow();
-        Users doctor = userRepository.findUsersByUsername(principal.getName());
-        Requests request = requestsRepository.findById(requestId).orElseThrow();
+    public RedirectView acceptRequests(Principal principal, long id, boolean accepted, Requests Srequest) {
+        Users doctor=userRepository.findUsersByUsername(principal.getName());
+        Users patient=userRepository.findById(id).orElseThrow();
+        Requests request=new Requests();
+        for (Requests chosenRequest:doctor.getDoctorRequests()
+             ) {
+            if(chosenRequest.getPatient()==patient){
+                request = chosenRequest;
+                break;
+            }
+        }
         if (accepted) {
             request.setAccepted(true);
             requestsRepository.save(request);
-            patient.getPatientRequests().add(request);
         } else {
             requestsRepository.delete(request);
-            doctor.getDoctorRequests().remove(request);
         }
         return new RedirectView("/requests");
     }

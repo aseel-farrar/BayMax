@@ -7,9 +7,11 @@ public class Reviews {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String body;
+    private String doctor;
+
 
     @ManyToOne
     @JoinColumn(name ="user_reviews_id" )
@@ -22,11 +24,27 @@ public class Reviews {
         this.body = body;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
     public String getBody() {
         return body;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 }

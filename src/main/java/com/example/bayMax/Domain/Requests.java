@@ -6,8 +6,9 @@ import java.io.Serializable;
 @Entity
 @Table(name="Requests")
 @IdClass(RequestsPK.class)
-public class Requests implements Serializable {
+public class Requests  {
 
+    private String createdAt;
 
 
     @Id
@@ -50,5 +51,11 @@ public class Requests implements Serializable {
         return isAccepted;
     }
 
+    public String getCreatedAt() {
+        return createdAt;
+    }
 
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
 }

@@ -208,7 +208,7 @@ public class Users implements UserDetails {
     }
 
     public Set<Requests> getPatientRequests() {
-        return doctorRequests;
+        return patientRequests;
     }
 
     public Set<Requests> getDoctorRequests() {
