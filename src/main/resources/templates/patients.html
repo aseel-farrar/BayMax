@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+    <header th:replace="fragment :: header"></header>
+
+
+  <main>
+      <h1> Patirnts page </h1>
+
+   <ul th:each="patient:${patients}">
+
+     <li th:text="${patient.firstname}"> </li>
+       <li> <a th:href="@{'/records/'+${patient.id}}"> view Record</a></li>
+<!--       <a th:href="@{'/category/edit/' + ${category.id}}">view</a>-->
+
+   </ul>
+
+  </main>
+
+  <footer th:replace="fragment :: footer"></footer>
+  </body>
+
+
+</html>
+
+
