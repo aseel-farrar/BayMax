@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="head">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,10 +32,14 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li class=""><a href="/myprofile">Profile</a></li>
-                <li class=""><a href="/signup">Sign UP</a></li>
-                <li class=""><a href="/login">Log in</a></li>
+
+                  <li sec:authorize ="isAnonymous()">  <a href="/login" > Login</a> </li>
+                  <li sec:authorize ="isAnonymous()"> <a href="/signup" > SignUp</a> </li>
+
                 <li class=""><a href="/about">About</a></li>
                 <li class=""><a href="/logout">Logout</a></li>
+                <li sec:authorize="isAuthenticated()" id="user"><span sec:authentication="name" ></span>  </li>
+
               </ul>
             </div>
           </div>
