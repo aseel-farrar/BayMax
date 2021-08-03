@@ -35,14 +35,15 @@ public class RequestsController {
         Users patient = userRepository.findUsersByUsername(principal.getName());
         Roles roles = rolesRepository.findRolesByName("DOCTOR");
         List<Users> doctors = userRepository.findAllByRoles(roles);
-
+        int[] times = {9,10,11,12,13,14,15,16};
+        model.addAttribute("times", times);
         model.addAttribute("doctors", doctors);
         model.addAttribute("patient", patient);
         return "appointment";
     }
 
     @PostMapping("/appointment")
-    public RedirectView selectAppointment(long id, long doctorId,Principal principal) {
+    public RedirectView selectAppointment(long id, long doctorId,Principal principal, String date, String time) {
         boolean isExist = false;
         Users patient = userRepository.findUsersByUsername(principal.getName());
         System.out.println("Doctor name = " + doctorId);
@@ -56,6 +57,8 @@ public class RequestsController {
         }
         if (!isExist) {
             Requests request = new Requests();
+            String appointDate = date + " at " + time+":00";
+            request.setCreatedAt(appointDate);
             request.setDoctor(doctor);
             request.setPatient(patient);
             request.setAccepted(false);
