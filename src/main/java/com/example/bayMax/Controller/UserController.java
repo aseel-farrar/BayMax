@@ -112,7 +112,7 @@ public class UserController {
         Users newUser = new Users(firstname,lastname,dateOfBirth,location,bloodType,nationalId,username,bCryptPasswordEncoder.encode(password));
         newUser.addRole(rolesRepository.findRolesByName("DOCTOR"));
         userRepository.save(newUser);
-        return new RedirectView("/");
+        return new RedirectView("/myprofile");
     }
     @GetMapping("/doctors")
     public String getDoctorsForm(){

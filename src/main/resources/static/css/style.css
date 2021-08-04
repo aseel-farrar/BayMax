@@ -186,6 +186,7 @@ body > div{
     padding: 50px;
     padding-left: 7%;
     background-color: aliceblue;
+    margin-bottom: 5%;
 }
 #profileDiv > p:nth-child(6){
     -webkit-text-size-adjust: 100%;
@@ -230,6 +231,7 @@ body > div{
     left: 65px;
     top: 12px;
 }
+
 /***************************************
 banner
 ***************************************/

@@ -4,6 +4,8 @@
       xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="fragment :: head" xmlns:th="http://www.w3.org/1999/xhtml" >
 <body>
+<header th:replace="fragment :: header"></header>
+
 
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -55,5 +57,8 @@
 
     });
 </script>
+
+<footer th:replace="fragment :: footer"></footer>
+
 </body>
 </html>

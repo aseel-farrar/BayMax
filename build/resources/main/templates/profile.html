@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="fragment :: head" xmlns:th="http://www.w3.org/1999/xhtml" >
-<body>
+<body style="display: flex; flex-direction: column; height: 100vh">
 <header th:replace="fragment :: header"></header>
 
 
@@ -15,7 +15,8 @@
      <p class="h2" th:text="'National ID: '+${userInfo.nationalId}"></p>
  </div>
 
-<a href="/appointment" style="margin-left: 43%;" class="btn btn-appoint">Make an Appointment.</a>
+<a sec:authorize="hasAuthority('USER')" href="/appointment" style="margin-left: 43%;" class="btn btn-appoint">Make an Appointment.</a>
+<a sec:authorize="hasAuthority('USER')" href="/addReviews" style="margin-left: 43%;" class="btn btn-appoint">Add Review</a>
 
 
 <!--<form th:action="@{/logout}" method="post">-->
