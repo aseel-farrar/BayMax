@@ -10,7 +10,7 @@
 
 
         <select  id="doctorId" name="doctorId" >
-
+            <option value="" selected disabled hidden>Your Doctor</option>
             <option th:each="doctor: ${doctors}" th:text="${doctor.firstname}"  th:value="${doctor.getId()}"  >
             </option>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en"  xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head th:fragment="head">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,9 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" href="css/reviews.css">
+  <link rel="stylesheet" th:href="@{/css/fragment.css}">
+  <link rel="stylesheet"  th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/reviews.css}">
 
 
 </head>
@@ -40,7 +41,7 @@
                 <li class=""><a href="/about">About</a></li>
                 <li sec:authorize="hasAuthority('ADMIN')"><a href="/doctors">Add Doctor </a></li>
                 <li sec:authorize="hasAuthority('DOCTOR')"><a href="/requests">Requests </a></li>
-                <li class=""><a href="/reviews">Profile</a></li>
+                <li class=""><a href="/reviews">Reviews</a></li>
 
 
 

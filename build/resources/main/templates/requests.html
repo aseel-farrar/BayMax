@@ -16,8 +16,8 @@
         <p th:text="'Created at: '+${request.getCreatedAt()}"></p>
         <input type="hidden" th:value="${request.patient.getId()}" name="id">
         <input type="hidden" th:value="${request}" name="request">
-        <input  type="submit" th:text="Accept" th:value="true" name="accepted">
-        <input  type="submit" th:text="Ignore" th:value="false" name="accepted">
+        <input  type="submit"  th:value="Accept" name="accepted">
+        <input  type="submit"  th:value="Ignore" name="accepted">
 
 
     </form>
