@@ -8,6 +8,7 @@ import java.io.Serializable;
 @IdClass(RequestsPK.class)
 public class Requests  {
 
+    private String createdAt;
 
 
     @Id
@@ -50,5 +51,11 @@ public class Requests  {
         return isAccepted;
     }
 
+    public String getCreatedAt() {
+        return createdAt;
+    }
 
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
 }

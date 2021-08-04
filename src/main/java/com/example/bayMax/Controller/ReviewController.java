@@ -3,6 +3,7 @@ package com.example.bayMax.Controller;
 import com.example.bayMax.Domain.Requests;
 import com.example.bayMax.Domain.Reviews;
 import com.example.bayMax.Domain.Users;
+import com.example.bayMax.Infrastructure.RequestsRepository;
 import com.example.bayMax.Infrastructure.ReviewsRepository;
 import com.example.bayMax.Infrastructure.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class ReviewController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    RequestsRepository requestsRepository;
+
     // get all reviews
     @GetMapping("/reviews")
     public String getReviews(Model model){
@@ -42,9 +46,9 @@ public class ReviewController {
         Reviews review = new Reviews(body);
         review.setDoctor(doctor.getFullName());
         review.setUser(patient);
-
-//        userRepository.save(doctor);
         reviewsRepository.save(review);
+//        userRepository.save(doctor);
+
         return new RedirectView("/reviews");
     }
 
@@ -55,11 +59,16 @@ public class ReviewController {
         List<Users> doctors = new ArrayList<>();
         for (Requests request: newUser.getPatientRequests()
         ) {
-            if (request.isAccepted()){
+            if (request.isAccepted() && reviewsRepository.findReviewsByUserAndDoctor(newUser ,request.getDoctor().getFullName()) == null){
                 doctors.add(request.getDoctor());
             }
+            if (request.isAccepted() && reviewsRepository.findReviewsByUserAndDoctor(newUser ,request.getDoctor().getFullName()) != null){
+                requestsRepository.delete(request);
+            }
+
         }
-        model.addAttribute("doctors",doctors);
+
+            model.addAttribute("doctors",doctors);
         return "reviewForm";
     }
 
