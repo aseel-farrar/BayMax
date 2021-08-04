@@ -40,7 +40,7 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*.jpg").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/doctors").hasAuthority("ADMIN")
-                .antMatchers("/patients").hasAuthority("DOCTOR")
+                .antMatchers("/patients","/blogs").hasAuthority("DOCTOR")
                 .antMatchers("/addReviews").hasAuthority("USER")
                 .anyRequest().authenticated()//any other pages you have to be authenticated
                 .and()
@@ -58,5 +58,4 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
     }
 }
-
 

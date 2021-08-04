@@ -67,6 +67,9 @@ public class Users implements UserDetails {
     @OneToMany(mappedBy = "doctor")
     Set<Requests> doctorRequests =new HashSet<>();
 
+    @OneToMany(mappedBy = "user")
+    List<Blog> blogs;
+
 
 
     public Users(String firstname, String lastname, Date dateOfBirth, String location, String bloodType, Long nationalId, String username, String password) {
@@ -220,4 +223,11 @@ public class Users implements UserDetails {
         return drugs;
     }
 
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
+    }
 }
