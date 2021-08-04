@@ -7,26 +7,26 @@
 <body>
 
 <div>
-  <form action="/appointment" method="post">
+    <form action="/appointment" method="post">
 
 
-      <select  id="doctorId" name="doctorId" >
+        <select  id="doctorId" name="doctorId" >
 
-          <option th:each="doctor: ${doctors}" th:text="${doctor.firstname}"  th:value="${doctor.getId()}"  >
-          </option>
+            <option th:each="doctor: ${doctors}" th:text="${doctor.firstname}"  th:value="${doctor.getId()}"  >
+            </option>
 
 
-      </select>
+        </select>
 
-      <label for="date"> Time </label>
-      <input type="date" name="date" id="date">
-      <select  id="timeId" name="time" >
-          <option th:each="time: ${times}" th:text="${time}+':00'"  th:value="${time}"  >
-          </option>
-      </select>
-      <input type="hidden" name="id" th:value="${patient.getId()}">
-      <input type="submit" value="submit">
-  </form>
+        <label for="date"> Time </label>
+        <input type="date" name="date" id="date">
+        <select  id="timeId" name="time" >
+            <option th:each="time: ${times}" th:text="${time}+':00'"  th:value="${time}"  >
+            </option>
+        </select>
+        <input type="hidden" name="id" th:value="${patient.getId()}">
+        <input type="submit" value="submit">
+    </form>
 </div>
 
 </body>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>appointment</title>
+</head>
+<body>
+
+<div>
+    <form action="/appointment" method="post">
+
+
+        <select  id="doctorId" name="doctorId" >
+
+            <option th:each="doctor: ${doctors}" th:text="${doctor.firstname}"  th:value="${doctor.getId()}"  >
+            </option>
+
+
+        </select>
+
+        <label for="date"> Time </label>
+        <input type="date" name="date" id="date">
+        <select  id="timeId" name="time" >
+            <option th:each="time: ${times}" th:text="${time}+':00'"  th:value="${time}"  >
+            </option>
+        </select>
+        <input type="hidden" name="id" th:value="${patient.getId()}">
+        <input type="submit" value="submit">
+    </form>
+</div>
+
+</body>
+</html>

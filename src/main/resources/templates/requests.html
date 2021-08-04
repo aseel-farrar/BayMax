@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org"
      >
-<head>
-    <meta charset="UTF-8">
-    <title>requests</title>
-</head>
+<head th:replace="fragment :: head" xmlns:th="http://www.w3.org/1999/xhtml" >
+
 <body>
 <h1 th:text="'You have '+${requests.size()}+' requests'"></h1>
 <div th:each="request: ${requests}">

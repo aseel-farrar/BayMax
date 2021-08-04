@@ -37,13 +37,19 @@ public class UserController {
 
     @GetMapping("/")
     public String homePage(Principal principal,Model model){
-if (principal!=null) { Users user =userRepository.findUsersByUsername(principal.getName());
-        model.addAttribute("user",user);}
+        if (principal!=null) { Users user =userRepository.findUsersByUsername(principal.getName());
+            model.addAttribute("user",user);}
         Roles role=rolesRepository.findRolesByName("doctor");
         List<Users>  doctors=  userRepository.findAllByRoles(role);
         model.addAttribute("doctors",doctors);
         return "home";
     }
+
+    @GetMapping("/about")
+    public String getaboutPage(){
+        return "about";
+    }
+
     @GetMapping("/signup")
     public String getSignupPage(){
         return "signup";
@@ -80,11 +86,11 @@ if (principal!=null) { Users user =userRepository.findUsersByUsername(principal.
                                   @RequestParam Long nationalId){
         Users newUser = new Users(firstname,lastname,dateOfBirth,location,bloodType,nationalId,username,bCryptPasswordEncoder.encode(password));
         newUser.addRole(rolesRepository.findRolesByName("USER"));
-      userRepository.save(newUser);
+        userRepository.save(newUser);
 
         UsernamePasswordAuthenticationToken authentication= new UsernamePasswordAuthenticationToken(newUser,null,new ArrayList<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new RedirectView("/myprofile");
+        return new RedirectView("/");
     }
 
 //    @GetMapping("/access-denied")
@@ -108,10 +114,10 @@ if (principal!=null) { Users user =userRepository.findUsersByUsername(principal.
         userRepository.save(newUser);
         return new RedirectView("/");
     }
-@GetMapping("/doctors")
+    @GetMapping("/doctors")
     public String getDoctorsForm(){
         return "doctors";
-}
+    }
 
 
 }

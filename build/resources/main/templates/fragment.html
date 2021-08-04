@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="css/reviews.css">
 
 
 </head>
@@ -37,7 +38,8 @@
                   <li sec:authorize ="isAnonymous()"> <a href="/signup" > SignUp</a> </li>
 
                 <li class=""><a href="/about">About</a></li>
-                <li class=""><a href="/logout">Logout</a></li>
+                <li sec:authorize="hasAuthority('ADMIN')"><a href="/signup">Add Doctor </a></li>
+                <li class="" sec:authorize ="isAuthenticated()"><a href="/logout">Logout</a></li>
                 <li sec:authorize="isAuthenticated()" id="user"><span sec:authentication="name" ></span>  </li>
 
               </ul>
