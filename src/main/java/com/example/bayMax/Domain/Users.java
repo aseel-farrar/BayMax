@@ -10,7 +10,7 @@ import java.time.YearMonth;
 import java.util.*;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class Users implements UserDetails {
 
     @Id
@@ -33,13 +33,13 @@ public class Users implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
-    private Set<Roles> roles=new HashSet<>();
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private Set<Roles> roles = new HashSet<>();
 
 
-    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL )
-    private List<Record> records= new ArrayList<>();
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    private List<Record> records = new ArrayList<>();
 
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -54,22 +54,18 @@ public class Users implements UserDetails {
         return records;
     }
 
-    public Users(){
+    public Users() {
     }
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     List<Reviews> reviews;
 
 
-    @OneToMany(mappedBy = "patient")
-    Set<Requests> patientRequests =new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
+    Set<Requests> patientRequests = new HashSet<>();
 
-    @OneToMany(mappedBy = "doctor")
-    Set<Requests> doctorRequests =new HashSet<>();
-
-    @OneToMany(mappedBy = "user")
-    List<Blog> blogs;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctor")
+    Set<Requests> doctorRequests = new HashSet<>();
 
 
     public Users(String firstname, String lastname, Date dateOfBirth, String location, String bloodType, Long nationalId, String username, String password) {
@@ -81,12 +77,13 @@ public class Users implements UserDetails {
         this.nationalId = nationalId;
         this.username = username;
         this.password = password;
-        this.old= calculateAge(dateOfBirth);
+        this.old = calculateAge(dateOfBirth);
     }
-    public int calculateAge(Date dateOfBirth){
+
+    public int calculateAge(Date dateOfBirth) {
         int year = YearMonth.now().getYear();
 
-        int age= year - dateOfBirth.getYear();
+        int age = year - dateOfBirth.getYear();
 
         return age;
     }
@@ -107,8 +104,8 @@ public class Users implements UserDetails {
         return lastname;
     }
 
-    public String getFullName(){
-        return firstname+" "+lastname;
+    public String getFullName() {
+        return firstname + " " + lastname;
     }
 
     public void setLastname(String lastname) {
@@ -199,7 +196,7 @@ public class Users implements UserDetails {
         return roles;
     }
 
-    public void addRole(Roles role ) {
+    public void addRole(Roles role) {
         this.roles.add(role);
     }
 
@@ -223,11 +220,4 @@ public class Users implements UserDetails {
         return drugs;
     }
 
-    public List<Blog> getBlogs() {
-        return blogs;
-    }
-
-    public void setBlogs(List<Blog> blogs) {
-        this.blogs = blogs;
-    }
 }
