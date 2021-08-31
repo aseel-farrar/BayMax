@@ -68,8 +68,6 @@ public class BayMaxApplication implements CommandLineRunner {
 
         }
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
         // get the drugs from the API and save it in database
         int numberOfHits = 5; //number of drugs = number of hits * 100
         for (int counter = 1; counter <= (numberOfHits * 95); ) {
